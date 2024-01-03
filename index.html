@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alacritty Theme Previewer</title>
+    <link rel="stylesheet" href="./app.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Terminal Preview</h1>
+        <div class="terminal" :style="{ background: colorList.background }">
+            <header style="display: flex; gap: 8px; margin-bottom: 10px; padding-left: 3px;">
+                <div class="color-item">
+                    <span>Background</span>
+                    <input type="color" v-model="colorList.background">
+                </div>
+
+                <div class="color-item">
+                    <span>Foreground</span>
+                    <input type="color" v-model="colorList.foreground">
+                </div>
+            </header>
+
+            <div class="terminal-inner">
+                <div class="color-item" v-for="item in displayList">
+                    <span :style="{ color: colorList.foreground }" class="color-code">{{ item.code }}</span>
+
+                    <div class="color-name-wrap">
+                        <span :style="{
+                        color: colorList[item.text],
+                        background: colorList[item.bg]
+                    }" class="color-name">{{ item.name }}</span>
+                    </div>
+
+                    <input type="color" v-model="colorList[item.pointer]">
+                </div>
+            </div>
+        </div>
+
+        <footer style="display: flex; gap: 1rem;">
+            <div style="display: flex; flex-direction: column;">
+                <small>Save it as theme.yoml</small>
+                <textarea class="yoml" readonly>{{ config }}</textarea>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <button @click="importTheme">Import Theme</button>
+                <textarea class="yoml" v-model="importText"></textarea>
+            </div>
+
+        </footer>
+    </div>
+</body>
+
+<script type="module" src="app.js"></script>
+
+</html>

@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: 'Hack Nerd Font', 'Courier New', Courier, monospace;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.terminal {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.terminal-inner {
+    display: inline-grid;
+    grid-template-columns: 240px 240px 300px 300px;
+    grid-template-rows: repeat(8, 30px);
+    grid-auto-flow: column;
+    column-gap: 10px;
+}
+
+.color-item {
+    display: flex;
+}
+
+.color-code::before {
+    content: '|';
+}
+
+.color-code::after {
+    content: '|';
+}
+
+.color-name-wrap {
+    flex: 1;
+}
+
+.color-name {
+    display: inline-block;
+}
+
+input[type=color] {
+    margin-left: 4px;
+}
+
+.yoml {
+    width: 300px;
+    height: 440px;
+}
