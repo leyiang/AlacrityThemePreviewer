@@ -15,12 +15,12 @@
         <div class="terminal" :style="{ background: colorList.background }">
             <header style="display: flex; gap: 8px; margin-bottom: 10px; padding-left: 3px;">
                 <div class="color-item">
-                    <span>Background</span>
+                    <span :style="{ color: colorList.foreground }">Background</span>
                     <input type="color" v-model="colorList.background">
                 </div>
 
                 <div class="color-item">
-                    <span>Foreground</span>
+                    <span :style="{ color: colorList.foreground }">Foreground</span>
                     <input type="color" v-model="colorList.foreground">
                 </div>
             </header>
